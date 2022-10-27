@@ -4,7 +4,38 @@
   
   
   <entry>
-    <title>LeetCode 467</title>
+    <title>LeetCode 450. 删除二叉搜索树中的节点</title>
+    <link href="/2022/06/02/leetcode/450/"/>
+    <url>/2022/06/02/leetcode/450/</url>
+    
+    <content type="html"><![CDATA[<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>将搜索二叉树结果节点的左子树挪到该节点右子树最小的节点的左子树上，再把该结果节点的右子树接到结果节点的父节点上。<br><br>或者将搜索二叉树结果节点的右子树挪到该节点左子树最大的节点的右子树上，再把该结果节点的左子树接到结果节点的父节点上。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight coq"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></div></td><td class="code"><pre><code class="hljs coq">/**<br> * <span class="hljs-keyword">Definition</span> <span class="hljs-keyword">for</span> a binary tree node.<br> * struct TreeNode &#123;<br> *     int val;<br> *     TreeNode *<span class="hljs-built_in">left</span>;<br> *     TreeNode *<span class="hljs-built_in">right</span>;<br> *     TreeNode() : val(<span class="hljs-number">0</span>), <span class="hljs-built_in">left</span>(nullptr), <span class="hljs-built_in">right</span>(nullptr) &#123;&#125;<br> *     TreeNode(int x) : val(x), <span class="hljs-built_in">left</span>(nullptr), <span class="hljs-built_in">right</span>(nullptr) &#123;&#125;<br> *     TreeNode(int x, TreeNode *<span class="hljs-built_in">left</span>, TreeNode *<span class="hljs-built_in">right</span>) : val(x), <span class="hljs-built_in">left</span>(<span class="hljs-built_in">left</span>), <span class="hljs-built_in">right</span>(<span class="hljs-built_in">right</span>) &#123;&#125;<br> * &#125;;<br> */<br>class Solution &#123;<br>public:<br>    TreeNode* deleteOneNode(TreeNode* root)&#123;<br>        <span class="hljs-keyword">if</span>(root==nullptr) <span class="hljs-keyword">return</span> root;<br>        <span class="hljs-keyword">if</span>(root-&gt;<span class="hljs-built_in">right</span>==nullptr)&#123;<br>            <span class="hljs-keyword">return</span> root-&gt;<span class="hljs-built_in">left</span>;<br>        &#125;<span class="hljs-keyword">else</span>&#123;<br>            TreeNode* newRoot=root-&gt;<span class="hljs-built_in">right</span>;<br>            while(newRoot-&gt;<span class="hljs-built_in">left</span>!=nullptr)&#123;<br>                newRoot=newRoot-&gt;<span class="hljs-built_in">left</span>;<br>            &#125;<br>            newRoot-&gt;<span class="hljs-built_in">left</span>=root-&gt;<span class="hljs-built_in">left</span>;<br>            <span class="hljs-keyword">return</span> root-&gt;<span class="hljs-built_in">right</span>;<br>        &#125;<br>        <br>    &#125;<br>    TreeNode* deleteNode(TreeNode* root, int key) &#123;<br>        <span class="hljs-keyword">if</span>(root == nullptr) <span class="hljs-keyword">return</span> root;<br>        TreeNode* preRoot=nullptr;<br>        TreeNode* res=root;<br>        while(res)&#123;<br>            <span class="hljs-keyword">if</span>(res-&gt;val==key) break;<br>            preRoot=res;<br>            <span class="hljs-keyword">if</span>(res-&gt;val&gt;key) res=res-&gt;<span class="hljs-built_in">left</span>;<br>            <span class="hljs-keyword">else</span> res=res-&gt;<span class="hljs-built_in">right</span>;<br>        &#125;<br>        <span class="hljs-keyword">if</span>(res==nullptr) <span class="hljs-keyword">return</span> root;<br>        <span class="hljs-keyword">else</span>&#123;<br>            <span class="hljs-keyword">if</span>(preRoot == nullptr)&#123;<br>                <span class="hljs-keyword">return</span> deleteOneNode(root);<br>            &#125;<span class="hljs-keyword">else</span>&#123;<br>                <span class="hljs-keyword">if</span>(preRoot-&gt;<span class="hljs-built_in">left</span>&amp;&amp;preRoot-&gt;<span class="hljs-built_in">left</span>==res)&#123;<br>                    preRoot-&gt;<span class="hljs-built_in">left</span>=deleteOneNode(res);<br>                &#125;<br>                <span class="hljs-keyword">if</span>(preRoot-&gt;<span class="hljs-built_in">right</span>&amp;&amp;preRoot-&gt;<span class="hljs-built_in">right</span>==res)&#123;<br>                    preRoot-&gt;<span class="hljs-built_in">right</span>=deleteOneNode(res);<br>                &#125;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> root;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure><section class="footnotes"><h2>参考<h2><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span><a href="https://leetcode.cn/problems/delete-node-in-a-bst/">https://leetcode.cn/problems/delete-node-in-a-bst/</a><a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:2" class="footnote-text"><span><a href="https://blog.csdn.net/Dajian1040556534/article/details/122122396">https://blog.csdn.net/Dajian1040556534/article/details/122122396</a><a href="#fnref:2" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>]]></content>
+    
+    
+    <categories>
+      
+      <category>note</category>
+      
+      <category>code</category>
+      
+      <category>leetcode</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>code</tag>
+      
+      <tag>leetcode</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>LeetCode 467. 环绕字符串中唯一的子字符串</title>
     <link href="/2022/05/25/leetcode/467/"/>
     <url>/2022/05/25/leetcode/467/</url>
     
@@ -70,7 +101,7 @@
     <link href="/2022/05/22/Csharp/Csharp-attribute-reflection/"/>
     <url>/2022/05/22/Csharp/Csharp-attribute-reflection/</url>
     
-    <content type="html"><![CDATA[<p>待更。。。</p>]]></content>
+    <content type="html"><![CDATA[<p>待更。。。</p><section class="footnotes"><h2>参考<h2><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span><a href="https://docs.unity3d.com/Manual/Attributes.html">https://docs.unity3d.com/Manual/Attributes.html</a><a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>]]></content>
     
     
     <categories>

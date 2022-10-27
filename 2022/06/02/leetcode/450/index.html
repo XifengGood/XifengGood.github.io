@@ -16,16 +16,16 @@
   <meta name="author" content="Jie Wang">
   <meta name="keywords" content="">
   
-    <meta name="description" content="动态规划">
+    <meta name="description" content="leetcode">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LeetCode 467. 环绕字符串中唯一的子字符串">
-<meta property="og:url" content="https://xifenggood.github.io/2022/05/25/leetcode/467/index.html">
+<meta property="og:title" content="LeetCode 450. 删除二叉搜索树中的节点">
+<meta property="og:url" content="https://xifenggood.github.io/2022/06/02/leetcode/450/index.html">
 <meta property="og:site_name" content="这里是后花园">
-<meta property="og:description" content="动态规划">
+<meta property="og:description" content="leetcode">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://xifenggood.github.io/img/leetcode.webp">
-<meta property="article:published_time" content="2022-05-25T09:53:51.000Z">
-<meta property="article:modified_time" content="2022-06-02T14:28:28.752Z">
+<meta property="article:published_time" content="2022-06-02T14:22:05.000Z">
+<meta property="article:modified_time" content="2022-06-02T14:26:38.003Z">
 <meta property="article:author" content="Jie Wang">
 <meta property="article:tag" content="code">
 <meta property="article:tag" content="leetcode">
@@ -33,7 +33,7 @@
 <meta name="twitter:image" content="https://xifenggood.github.io/img/leetcode.webp">
   
   
-  <title>LeetCode 467. 环绕字符串中唯一的子字符串 - 这里是后花园</title>
+  <title>LeetCode 450. 删除二叉搜索树中的节点 - 这里是后花园</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -215,7 +215,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="LeetCode 467. 环绕字符串中唯一的子字符串">
+            <span class="h2" id="subtitle" title="LeetCode 450. 删除二叉搜索树中的节点">
               
             </span>
 
@@ -225,8 +225,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2022-05-25 17:53" pubdate>
-        2022年5月25日 下午
+      <time datetime="2022-06-02 22:22" pubdate>
+        2022年6月2日 晚上
       </time>
     </span>
   
@@ -236,7 +236,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      688 字
+      1.6k 字
     </span>
   
 
@@ -245,7 +245,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      6 分钟
+      13 分钟
     </span>
   
 
@@ -274,13 +274,14 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">LeetCode 467. 环绕字符串中唯一的子字符串</h1>
+            <h1 style="display: none">LeetCode 450. 删除二叉搜索树中的节点</h1>
             
             <div class="markdown-body">
-              <h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>记录每个字母为开头的最大长度，根据这个长度更新之后的字符数量，最后全部相加。</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight routeros"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></div></td><td class="code"><pre><code class="hljs routeros">class Solution &#123;<br>public:<br>    int findSubstringInWraproundString(string p) &#123;<br>        vector&lt;int&gt; dp(26);<br>        int <span class="hljs-attribute">subSL</span>=1;<br>        char <span class="hljs-attribute">startS</span>=p[0]-<span class="hljs-string">&#x27;a&#x27;</span>;<br>        <span class="hljs-keyword">for</span>(int <span class="hljs-attribute">i</span>=0;i+1&lt;p.length();i++)&#123;<br>            char <span class="hljs-attribute">c1</span>=p[i]-<span class="hljs-string">&#x27;a&#x27;</span>;<br>            char <span class="hljs-attribute">c2</span>=p[i+1]-<span class="hljs-string">&#x27;a&#x27;</span>;<br>            <span class="hljs-keyword">if</span>((c1+1)%<span class="hljs-attribute">26</span>==c2)&#123;<br>                subSL++;<br>            &#125;<span class="hljs-keyword">else</span>&#123;<br>                dp[startS]=max(dp[startS],subSL);<br>                <span class="hljs-attribute">subSL</span>=1;<br>                <span class="hljs-attribute">startS</span>=c2;<br>            &#125;<br>        &#125;<br>        dp[startS]=max(dp[startS],subSL);<br>        <span class="hljs-keyword">for</span>(int <span class="hljs-attribute">i</span>=0;i&lt;26;i++)&#123;<br>            <span class="hljs-keyword">if</span>(dp[i])&#123;<br>                <span class="hljs-keyword">for</span>(int <span class="hljs-attribute">k</span>=1;k&lt;dp[i];k++)&#123;<br>                    dp[(i+k)%26]=max(dp[(i+k)%26],dp[i]-k);<br>                &#125;<br>            &#125;<br>        &#125;<br>        int <span class="hljs-attribute">res</span>=0;<br>        <span class="hljs-keyword">for</span>(int <span class="hljs-attribute">i</span>=0;i&lt;26;i++)&#123;<br>            res+=dp[i];<br>        &#125;<br>        return res;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-<p>[^1]:</p>
-
+              <h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>将搜索二叉树结果节点的左子树挪到该节点右子树最小的节点的左子树上，再把该结果节点的右子树接到结果节点的父节点上。<br><br>或者将搜索二叉树结果节点的右子树挪到该节点左子树最大的节点的右子树上，再把该结果节点的左子树接到结果节点的父节点上。</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight coq"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></div></td><td class="code"><pre><code class="hljs coq">/**<br> * <span class="hljs-keyword">Definition</span> <span class="hljs-keyword">for</span> a binary tree node.<br> * struct TreeNode &#123;<br> *     int val;<br> *     TreeNode *<span class="hljs-built_in">left</span>;<br> *     TreeNode *<span class="hljs-built_in">right</span>;<br> *     TreeNode() : val(<span class="hljs-number">0</span>), <span class="hljs-built_in">left</span>(nullptr), <span class="hljs-built_in">right</span>(nullptr) &#123;&#125;<br> *     TreeNode(int x) : val(x), <span class="hljs-built_in">left</span>(nullptr), <span class="hljs-built_in">right</span>(nullptr) &#123;&#125;<br> *     TreeNode(int x, TreeNode *<span class="hljs-built_in">left</span>, TreeNode *<span class="hljs-built_in">right</span>) : val(x), <span class="hljs-built_in">left</span>(<span class="hljs-built_in">left</span>), <span class="hljs-built_in">right</span>(<span class="hljs-built_in">right</span>) &#123;&#125;<br> * &#125;;<br> */<br>class Solution &#123;<br>public:<br>    TreeNode* deleteOneNode(TreeNode* root)&#123;<br>        <span class="hljs-keyword">if</span>(root==nullptr) <span class="hljs-keyword">return</span> root;<br>        <span class="hljs-keyword">if</span>(root-&gt;<span class="hljs-built_in">right</span>==nullptr)&#123;<br>            <span class="hljs-keyword">return</span> root-&gt;<span class="hljs-built_in">left</span>;<br>        &#125;<span class="hljs-keyword">else</span>&#123;<br>            TreeNode* newRoot=root-&gt;<span class="hljs-built_in">right</span>;<br>            while(newRoot-&gt;<span class="hljs-built_in">left</span>!=nullptr)&#123;<br>                newRoot=newRoot-&gt;<span class="hljs-built_in">left</span>;<br>            &#125;<br>            newRoot-&gt;<span class="hljs-built_in">left</span>=root-&gt;<span class="hljs-built_in">left</span>;<br>            <span class="hljs-keyword">return</span> root-&gt;<span class="hljs-built_in">right</span>;<br>        &#125;<br>        <br>    &#125;<br>    TreeNode* deleteNode(TreeNode* root, int key) &#123;<br>        <span class="hljs-keyword">if</span>(root == nullptr) <span class="hljs-keyword">return</span> root;<br>        TreeNode* preRoot=nullptr;<br>        TreeNode* res=root;<br>        while(res)&#123;<br>            <span class="hljs-keyword">if</span>(res-&gt;val==key) break;<br>            preRoot=res;<br>            <span class="hljs-keyword">if</span>(res-&gt;val&gt;key) res=res-&gt;<span class="hljs-built_in">left</span>;<br>            <span class="hljs-keyword">else</span> res=res-&gt;<span class="hljs-built_in">right</span>;<br>        &#125;<br>        <span class="hljs-keyword">if</span>(res==nullptr) <span class="hljs-keyword">return</span> root;<br>        <span class="hljs-keyword">else</span>&#123;<br>            <span class="hljs-keyword">if</span>(preRoot == nullptr)&#123;<br>                <span class="hljs-keyword">return</span> deleteOneNode(root);<br>            &#125;<span class="hljs-keyword">else</span>&#123;<br>                <span class="hljs-keyword">if</span>(preRoot-&gt;<span class="hljs-built_in">left</span>&amp;&amp;preRoot-&gt;<span class="hljs-built_in">left</span>==res)&#123;<br>                    preRoot-&gt;<span class="hljs-built_in">left</span>=deleteOneNode(res);<br>                &#125;<br>                <span class="hljs-keyword">if</span>(preRoot-&gt;<span class="hljs-built_in">right</span>&amp;&amp;preRoot-&gt;<span class="hljs-built_in">right</span>==res)&#123;<br>                    preRoot-&gt;<span class="hljs-built_in">right</span>=deleteOneNode(res);<br>                &#125;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> root;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<section class="footnotes"><h2>参考<h2><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/delete-node-in-a-bst/">https://leetcode.cn/problems/delete-node-in-a-bst/</a>
+<a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:2" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://blog.csdn.net/Dajian1040556534/article/details/122122396">https://blog.csdn.net/Dajian1040556534/article/details/122122396</a>
+<a href="#fnref:2" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>
             </div>
             <hr>
             <div>
@@ -320,18 +321,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/06/02/leetcode/450/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">LeetCode 450. 删除二叉搜索树中的节点</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/05/22/leetcode/464/">
-                        <span class="hidden-mobile">LeetCode 464. 我能赢吗</span>
+                      <a href="/2022/05/25/leetcode/467/">
+                        <span class="hidden-mobile">LeetCode 467. 环绕字符串中唯一的子字符串</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
