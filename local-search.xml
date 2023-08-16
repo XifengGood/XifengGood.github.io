@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>2023-7-19小记</title>
+    <link href="/2023/07/19/2023-7-19%E5%B0%8F%E8%AE%B0/"/>
+    <url>/2023/07/19/2023-7-19%E5%B0%8F%E8%AE%B0/</url>
+    
+    <content type="html"><![CDATA[<p>今日复习内容<br>高等数学</p><p>极值和最值<br>  无条件极值<br>  条件极值<br>    拉格朗日乘数法<br>  区域最值</p><p>方向导数、梯度、几何应用</p><p>多元函数积分<br>  二重积分<br>  三重积分</p><p>曲线积分<br>  第一类曲线积分<br>  第二类曲线积分<br>    格林公式<br>    斯托克斯公式</p><p>曲面积分<br>  第一类曲线积分<br>  第二类曲线积分<br>    高斯公式</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>diary</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>diary</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>LeetCode 450. 删除二叉搜索树中的节点</title>
     <link href="/2022/06/02/leetcode/450/"/>
     <url>/2022/06/02/leetcode/450/</url>
@@ -14,8 +39,6 @@
     <categories>
       
       <category>note</category>
-      
-      <category>code</category>
       
       <category>leetcode</category>
       
@@ -46,8 +69,6 @@
       
       <category>note</category>
       
-      <category>code</category>
-      
       <category>leetcode</category>
       
     </categories>
@@ -77,8 +98,6 @@
       
       <category>note</category>
       
-      <category>code</category>
-      
       <category>leetcode</category>
       
     </categories>
@@ -106,6 +125,8 @@
     
     <categories>
       
+      <category>code</category>
+      
       <category>C#</category>
       
     </categories>
@@ -114,6 +135,8 @@
     <tags>
       
       <tag>C#</tag>
+      
+      <tag>code</tag>
       
     </tags>
     
@@ -131,6 +154,8 @@
     
     <categories>
       
+      <category>code</category>
+      
       <category>C#</category>
       
     </categories>
@@ -139,6 +164,8 @@
     <tags>
       
       <tag>C#</tag>
+      
+      <tag>code</tag>
       
     </tags>
     
@@ -237,8 +264,6 @@
       
       <category>note</category>
       
-      <category>code</category>
-      
       <category>leetcode</category>
       
     </categories>
@@ -267,8 +292,6 @@
     <categories>
       
       <category>note</category>
-      
-      <category>code</category>
       
       <category>leetcode</category>
       
@@ -299,8 +322,6 @@
       
       <category>note</category>
       
-      <category>code</category>
-      
       <category>leetcode</category>
       
     </categories>
@@ -329,8 +350,6 @@
     <categories>
       
       <category>note</category>
-      
-      <category>code</category>
       
       <category>leetcode</category>
       
@@ -361,8 +380,6 @@
       
       <category>note</category>
       
-      <category>code</category>
-      
       <category>leetcode</category>
       
     </categories>
@@ -391,8 +408,6 @@
     <categories>
       
       <category>note</category>
-      
-      <category>code</category>
       
       <category>leetcode</category>
       
@@ -423,8 +438,6 @@
       
       <category>note</category>
       
-      <category>code</category>
-      
       <category>leetcode</category>
       
     </categories>
@@ -453,8 +466,6 @@
     <categories>
       
       <category>note</category>
-      
-      <category>code</category>
       
       <category>leetcode</category>
       
@@ -485,8 +496,6 @@
       
       <category>note</category>
       
-      <category>code</category>
-      
       <category>leetcode</category>
       
     </categories>
@@ -515,8 +524,6 @@
     <categories>
       
       <category>note</category>
-      
-      <category>code</category>
       
       <category>leetcode</category>
       
@@ -547,8 +554,6 @@
       
       <category>note</category>
       
-      <category>code</category>
-      
       <category>leetcode</category>
       
     </categories>
@@ -577,8 +582,6 @@
     <categories>
       
       <category>note</category>
-      
-      <category>code</category>
       
       <category>leetcode</category>
       
@@ -609,8 +612,6 @@
       
       <category>note</category>
       
-      <category>code</category>
-      
       <category>leetcode</category>
       
     </categories>
@@ -639,8 +640,6 @@
     <categories>
       
       <category>note</category>
-      
-      <category>code</category>
       
       <category>leetcode</category>
       
@@ -671,8 +670,6 @@
       
       <category>note</category>
       
-      <category>code</category>
-      
       <category>leetcode</category>
       
     </categories>
@@ -701,8 +698,6 @@
     <categories>
       
       <category>note</category>
-      
-      <category>code</category>
       
       <category>leetcode</category>
       
@@ -733,8 +728,6 @@
       
       <category>note</category>
       
-      <category>code</category>
-      
       <category>leetcode</category>
       
     </categories>
@@ -763,8 +756,6 @@
     <categories>
       
       <category>note</category>
-      
-      <category>code</category>
       
       <category>leetcode</category>
       
@@ -850,8 +841,6 @@
     <categories>
       
       <category>note</category>
-      
-      <category>code</category>
       
       <category>leetcode</category>
       
