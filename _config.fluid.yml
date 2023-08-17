@@ -1,0 +1,59 @@
+# 导航栏的相关配置
+# Navigation bar
+navbar:
+  # 导航栏左侧的标题，为空则按 hexo config 中 `title` 显示
+  # The title on the left side of the navigation bar. If empty, it is based on `title` in hexo config
+  blog_title: "细风の后花园"
+
+  # 导航栏菜单，可自行增减，key 用来关联 languages/*.yml，如不存在关联则显示 key 本身的值；icon 是 css class，可以省略；增加 name 可以强制显示指定名称
+  # Navigation bar menu. `key` is used to associate languages/*.yml. If there is no association, the value of `key` itself will be displayed; if `icon` is a css class, it can be omitted; adding `name` can force the display of the specified name
+  menu:
+    - { key: "home", link: "/", icon: "iconfont icon-home-fill" }
+    - { key: "archive", link: "/archives/", icon: "iconfont icon-archive-fill" }
+    - { key: "category", link: "/categories/", icon: "iconfont icon-category-fill" }
+    - { key: "tag", link: "/tags/", icon: "iconfont icon-tags-fill" }
+    - { key: "note", 
+        link: "/note/", 
+        submenu: [
+          {key: 'leetcode', link: '/categories/note/leetcode/'},
+        ],
+        icon: "iconfont book icon-book" }
+    - { key: "about", link: "/about/", icon: "iconfont icon-user-fill" }
+    - { key: "links", link: "/links/", icon: "iconfont icon-link-fill" }
+
+
+#---------------------------
+# 首页
+# Home Page
+#---------------------------
+index:
+  # 首页 Banner 头图，可以是相对路径或绝对路径，以下相同
+  # Path of Banner image, can be a relative path or an absolute path, the same on other pages
+  banner_img: /img/index.png
+
+  # 首页副标题的独立设置
+  # Independent config of home page subtitle
+  slogan:
+    enable: true
+
+    # 为空则按 hexo config.subtitle 显示
+    # If empty, text based on `subtitle` in hexo config
+    text: "一直不停的想······"
+
+
+#---------------------------
+# 关于页
+# About Page
+#---------------------------
+about:
+  enable: true
+  banner_img: /img/default.png
+  avatar: /img/portrait.jpg
+  name: "Xifeng"
+  intro: "An back garden for Xifeng"
+  # 更多图标可从 https://hexo.fluid-dev.com/docs/icon/ 查找，`class` 代表图标的 css class，添加 `qrcode` 后，图标不再是链接而是悬浮二维码
+  # More icons can be found from https://hexo.fluid-dev.com/docs/en/icon/  `class` is the css class of the icon. If adding `qrcode`, The icon is no longer a link, but a hovering QR code
+  icons:
+    - { class: "iconfont icon-github-fill", link: "https://github.com", tip: "GitHub" }
+    - { class: "iconfont icon-douban-fill", link: "https://douban.com", tip: "豆瓣" }
+    - { class: "iconfont icon-wechat-fill"}
