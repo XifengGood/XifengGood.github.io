@@ -16,25 +16,24 @@
   <meta name="author" content="Jie Wang">
   <meta name="keywords" content="">
   
-    <meta name="description" content="每日一题LeetCode 双指针和滚动数组">
+    <meta name="description" content="跳表的设计与实现">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LeetCode 713. 乘积小于 K 的子数组">
-<meta property="og:url" content="https://xifenggood.github.io/2022/05/05/leetcode/713/index.html">
+<meta property="og:title" content="跳表">
+<meta property="og:url" content="https://xifenggood.github.io/2025/04/14/note/skiplist/index.html">
 <meta property="og:site_name" content="这里是后花园">
-<meta property="og:description" content="每日一题LeetCode 双指针和滚动数组">
+<meta property="og:description" content="跳表的设计与实现">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://xifenggood.github.io/img/leetcode.webp">
-<meta property="article:published_time" content="2022-05-05T11:20:56.000Z">
-<meta property="article:modified_time" content="2025-03-05T08:14:25.933Z">
+<meta property="og:image" content="https://pic.leetcode.cn/1702370216-mKQcTt-1506_skiplist.gif">
+<meta property="article:published_time" content="2025-04-14T01:11:52.000Z">
+<meta property="article:modified_time" content="2025-04-27T08:21:29.604Z">
 <meta property="article:author" content="Jie Wang">
 <meta property="article:tag" content="code">
-<meta property="article:tag" content="leetcode">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://xifenggood.github.io/img/leetcode.webp">
+<meta name="twitter:image" content="https://pic.leetcode.cn/1702370216-mKQcTt-1506_skiplist.gif">
   
   
   
-  <title>LeetCode 713. 乘积小于 K 的子数组 - 这里是后花园</title>
+  <title>跳表 - 这里是后花园</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -236,7 +235,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="LeetCode 713. 乘积小于 K 的子数组"></span>
+            <span id="subtitle" data-typed-text="跳表"></span>
           
         </div>
 
@@ -247,8 +246,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-05-05 19:20" pubdate>
-          2022年5月5日 晚上
+        <time datetime="2025-04-14 09:11" pubdate>
+          2025年4月14日 上午
         </time>
       </span>
     
@@ -259,7 +258,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          668 字
+          2.1k 字
         
       </span>
     
@@ -270,7 +269,7 @@
         
         
         
-          6 分钟
+          18 分钟
         
       </span>
     
@@ -307,14 +306,15 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">LeetCode 713. 乘积小于 K 的子数组</h1>
+            <h1 id="seo-header">跳表</h1>
             
             
               <div class="markdown-body">
                 
-                <h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>双循环时间超限，考虑滚动数组和双指针。</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">numSubarrayProductLessThanK</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums, <span class="hljs-type">int</span> k)</span> </span>&#123;<br>        <span class="hljs-type">int</span> n=nums.<span class="hljs-built_in">size</span>();<br>        <span class="hljs-type">int</span> l=<span class="hljs-number">0</span>,r=<span class="hljs-number">0</span>;<span class="hljs-comment">//左右指针</span><br>        <span class="hljs-type">int</span> s=nums[<span class="hljs-number">0</span>];<br>        <span class="hljs-type">long</span> <span class="hljs-type">long</span> res=<span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">while</span>(l&lt;=r&amp;&amp;r!=n<span class="hljs-number">-1</span>)&#123;<br>            <span class="hljs-keyword">while</span>(s&lt;k)&#123;<br>                res+=r-l+<span class="hljs-number">1</span>;<br>                <span class="hljs-keyword">if</span>(r!=n<span class="hljs-number">-1</span>)&#123;<br>                    r++;<br>                    s*=nums[r];<br>                &#125;<span class="hljs-keyword">else</span>&#123;<br>                    <span class="hljs-keyword">break</span>;<br>                &#125;<br>            &#125;<br>            <span class="hljs-keyword">if</span>(s&gt;=k)&#123;<br>                <span class="hljs-keyword">while</span>(s&gt;=k)&#123;<br>                    <span class="hljs-keyword">if</span>(l&lt;n)&#123;<br>                        s/=nums[l++];<br>                        <span class="hljs-keyword">if</span>(s==<span class="hljs-number">1</span>&amp;&amp;l&lt;n)&#123;<br>                            r=l;<br>                            s=nums[r];<br>                        &#125;<br>                    &#125;<span class="hljs-keyword">else</span>&#123;<br>                        <span class="hljs-keyword">break</span>;<br>                    &#125;<br>                &#125;<br>                <span class="hljs-keyword">if</span>(r==n<span class="hljs-number">-1</span>&amp;&amp;s&lt;k) res+=r-l+<span class="hljs-number">1</span>;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-<section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/subarray-product-less-than-k/submissions/">https://leetcode-cn.com/problems/subarray-product-less-than-k/submissions/</a>
+                <h1 id="跳表"><a href="#跳表" class="headerlink" title="跳表"></a>跳表</h1><p><img src="https://pic.leetcode.cn/1702370216-mKQcTt-1506_skiplist.gif" srcset="/img/loading.gif" lazyload alt="img" title="跳表示意图"></p>
+<h2 id="跳表实现"><a href="#跳表实现" class="headerlink" title="跳表实现"></a>跳表实现</h2><!-- more -->
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-keyword">struct</span> <span class="hljs-title class_">SkiplistNode</span>&#123;<br>    <span class="hljs-type">int</span> val;<br>    vector&lt;SkiplistNode*&gt; forward;<br>    <span class="hljs-built_in">SkiplistNode</span>(<span class="hljs-type">int</span> val,<span class="hljs-type">int</span> MAX_LEVEL):<span class="hljs-built_in">val</span>(val),forward(MAX_LEVEL,<span class="hljs-literal">nullptr</span>)&#123;&#125;<br><br>&#125;;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Skiplist</span> &#123;<br><span class="hljs-keyword">private</span>:<br>    <span class="hljs-type">static</span> <span class="hljs-keyword">constexpr</span> <span class="hljs-type">const</span> <span class="hljs-type">int</span> MAX_LEVEL = <span class="hljs-number">32</span>;<br>    <span class="hljs-type">static</span> <span class="hljs-keyword">constexpr</span> <span class="hljs-type">const</span> <span class="hljs-type">int</span> P = <span class="hljs-number">4</span>; <span class="hljs-comment">// p=0.25</span><br>    <span class="hljs-type">static</span> <span class="hljs-keyword">constexpr</span> <span class="hljs-type">const</span> <span class="hljs-type">int</span> S = <span class="hljs-number">0xFFFF</span>;<br>    <span class="hljs-type">static</span> <span class="hljs-keyword">constexpr</span> <span class="hljs-type">const</span> <span class="hljs-type">int</span> PS = S/P;<br>    <span class="hljs-type">static</span> <span class="hljs-keyword">constexpr</span> <span class="hljs-type">const</span> <span class="hljs-type">int</span> INVALID = INT_MAX;<br>    SkiplistNode *dummy_head;<br>    <span class="hljs-type">int</span> level;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">Skiplist</span>():<span class="hljs-built_in">level</span>(<span class="hljs-number">1</span>) &#123;<br>        dummy_head = <span class="hljs-keyword">new</span> <span class="hljs-built_in">SkiplistNode</span>(INVALID,MAX_LEVEL);<br><br>    &#125;<br>    <br>    <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">search</span><span class="hljs-params">(<span class="hljs-type">int</span> target)</span> </span>&#123;<br>        SkiplistNode * curr = dummy_head;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=level<span class="hljs-number">-1</span>;i&gt;=<span class="hljs-number">0</span>;i--)&#123;<br>            <span class="hljs-keyword">while</span>(curr-&gt;forward[i]&amp;&amp;curr-&gt;forward[i]-&gt;val&lt;target)&#123;<br>                curr=curr-&gt;forward[i];<br>            &#125;<br>        &#125;<br>        curr=curr-&gt;forward[<span class="hljs-number">0</span>];<br>        <span class="hljs-keyword">if</span>(curr&amp;&amp;curr-&gt;val==target)&#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>    &#125;<br>    <br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">add</span><span class="hljs-params">(<span class="hljs-type">int</span> num)</span> </span>&#123;<br>        <span class="hljs-type">int</span> lv=<span class="hljs-built_in">randomLevel</span>();<br>        <span class="hljs-function">vector&lt;SkiplistNode*&gt; <span class="hljs-title">update</span><span class="hljs-params">(lv,<span class="hljs-literal">nullptr</span>)</span></span>;<br>        SkiplistNode *curr = dummy_head;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=level<span class="hljs-number">-1</span>;i&gt;=<span class="hljs-number">0</span>;i--)&#123;<br>            <span class="hljs-keyword">while</span>(curr-&gt;forward[i]&amp;&amp;curr-&gt;forward[i]-&gt;val&lt;num)&#123;<br>                curr=curr-&gt;forward[i];<br>            &#125;<br>            <span class="hljs-keyword">if</span>(i&lt;lv)&#123;<br>                update[i]=curr;<br>            &#125;<br>        &#125;<br><br>        <span class="hljs-comment">// i表示层数</span><br>        SkiplistNode *node = <span class="hljs-keyword">new</span> <span class="hljs-built_in">SkiplistNode</span>(num,lv);<br><br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-built_in">min</span>(level,lv);i++)&#123;<br>            node-&gt;forward[i] = update[i]-&gt;forward[i];<br>            update[i]-&gt;forward[i]=node;<br>        &#125;<br><br>        level=<span class="hljs-built_in">max</span>(level,lv);<br>    &#125;<br>    <br>    <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">erase</span><span class="hljs-params">(<span class="hljs-type">int</span> num)</span> </span>&#123;<br>        <span class="hljs-function">vector&lt;SkiplistNode*&gt; <span class="hljs-title">update</span><span class="hljs-params">(MAX_LEVEL,<span class="hljs-literal">nullptr</span>)</span></span>;<br>        SkiplistNode *curr = dummy_head;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=level<span class="hljs-number">-1</span>;i&gt;=<span class="hljs-number">0</span>;i--)&#123;<br>            <span class="hljs-keyword">while</span>(curr-&gt;forward[i]&amp;&amp;curr-&gt;forward[i]-&gt;val&lt;num)&#123;<br>                curr=curr-&gt;forward[i];<br>            &#125;<br>            update[i]=curr;<br>        &#125;<br><br>        <span class="hljs-keyword">if</span>(curr-&gt;forward[<span class="hljs-number">0</span>]==<span class="hljs-literal">nullptr</span>||curr-&gt;forward[<span class="hljs-number">0</span>]-&gt;val!=num)&#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        &#125;<br><br>        curr=curr-&gt;forward[<span class="hljs-number">0</span>];<br>        <span class="hljs-comment">// i表示层数</span><br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;curr-&gt;forward.<span class="hljs-built_in">size</span>();i++)&#123;<br>            update[i]-&gt;forward[i]=curr-&gt;forward[i];<br>        &#125;<br><br>        <span class="hljs-keyword">delete</span> curr;<br><br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">randomLevel</span><span class="hljs-params">()</span></span>&#123;<br>        <span class="hljs-type">int</span> lv=<span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">while</span>(<span class="hljs-built_in">rand</span>()%S&lt;PS)&#123;++lv;&#125;<br><br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">min</span>(lv,MAX_LEVEL);<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/design-skiplist/">https://leetcode.cn/problems/design-skiplist/</a>
 <a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>
                 
               </div>
@@ -336,13 +336,6 @@
   <a href="/categories/note/" class="category-chain-item">note</a>
   
   
-    <span>></span>
-    
-  <a href="/categories/note/leetcode/" class="category-chain-item">leetcode</a>
-  
-  
-
-  
 
       </span>
     
@@ -357,8 +350,6 @@
       
         <a href="/tags/code/" class="print-no-link">#code</a>
       
-        <a href="/tags/leetcode/" class="print-no-link">#leetcode</a>
-      
     </div>
   
 </div>
@@ -369,8 +360,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>LeetCode 713. 乘积小于 K 的子数组</div>
-      <div>https://xifenggood.github.io/2022/05/05/leetcode/713/</div>
+      <div>跳表</div>
+      <div>https://xifenggood.github.io/2025/04/14/note/skiplist/</div>
     </div>
     <div class="license-meta">
       
@@ -382,7 +373,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年5月5日</div>
+          <div>2025年4月14日</div>
         </div>
       
       
@@ -414,9 +405,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/05/06/leetcode/933/" title="LeetCode 933. 最近的请求次数">
+                      <a href="/2025/04/27/note/string/" title="字符串算法">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">LeetCode 933. 最近的请求次数</span>
+                        <span class="hidden-mobile">字符串算法</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -424,8 +415,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/05/04/leetcode/1562/" title="LeetCode 1562. 查找大小为 M 的最新分组">
-                        <span class="hidden-mobile">LeetCode 1562. 查找大小为 M 的最新分组</span>
+                      <a href="/2025/04/14/note/DP/" title="动态规划DP">
+                        <span class="hidden-mobile">动态规划DP</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
