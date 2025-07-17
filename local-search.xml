@@ -4,6 +4,44 @@
   
   
   <entry>
+    <title>Hexo 指令</title>
+    <link href="/2025/07/08/hexo/Hexo_command/"/>
+    <url>/2025/07/08/hexo/Hexo_command/</url>
+    
+    <content type="html"><![CDATA[<h1 id="创建新页面"><a href="#创建新页面" class="headerlink" title="创建新页面"></a>创建新页面</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo new [layout] &lt;title&gt;<br></code></pre></td></tr></table></figure><table><thead><tr><th>Option</th><th>Description</th></tr></thead><tbody><tr><td>-p, –path</td><td>Post path. Customize the path of the post.</td></tr><tr><td>-r, –replace</td><td>Replace the current post if existed.</td></tr><tr><td>-s, –slug</td><td>Post slug. Customize the URL of the post.</td></tr></tbody></table><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo new page --path about/me <span class="hljs-string">&quot;About me&quot;</span><br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>linux 命令</title>
+    <link href="/2025/07/08/note/linux-command/"/>
+    <url>/2025/07/08/note/linux-command/</url>
+    
+    <content type="html"><![CDATA[<h1 id="实时查看日志文件的方法"><a href="#实时查看日志文件的方法" class="headerlink" title="实时查看日志文件的方法"></a>实时查看日志文件的方法</h1><p>有几种方法可以实时查看不断更新的日志文件内容：</p><h2 id="1-使用-tail-命令"><a href="#1-使用-tail-命令" class="headerlink" title="1. 使用 tail 命令"></a>1. 使用 tail 命令</h2><p>最常用的方法是使用 tail 命令加上 -f 参数：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">tail</span> -f /path/to/logfile.log<br></code></pre></td></tr></table></figure><ul><li><p>-f 参数表示”follow”，会持续显示文件新增的内容</p></li><li><p>按 Ctrl+C 停止查看</p></li></ul><h2 id="2-使用-less-命令"><a href="#2-使用-less-命令" class="headerlink" title="2. 使用 less 命令"></a>2. 使用 less 命令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">less +F /path/to/logfile.log<br></code></pre></td></tr></table></figure><ul><li><p>进入 less 后按 F 键可以进入实时跟踪模式</p></li><li><p>按 Ctrl+C 停止跟踪，然后可以按 q 退出</p></li></ul><h2 id="3-使用-multitail-工具"><a href="#3-使用-multitail-工具" class="headerlink" title="3. 使用 multitail 工具"></a>3. 使用 multitail 工具</h2><p>如果需要同时监控多个日志文件：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">multitail /path/to/log1.<span class="hljs-built_in">log</span> /path/to/log2.<span class="hljs-built_in">log</span><br></code></pre></td></tr></table></figure><ul><li><p>这是一个专门用于查看多个日志的工具</p></li><li><p>支持颜色高亮、分屏等功能</p></li></ul><h2 id="4-使用-watch-命令"><a href="#4-使用-watch-命令" class="headerlink" title="4. 使用 watch 命令"></a>4. 使用 watch 命令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">watch -n 1 <span class="hljs-string">&quot;tail -n 20 /path/to/logfile.log&quot;</span><br></code></pre></td></tr></table></figure><ul><li><p>每1秒刷新一次，显示最后20行</p></li><li><p>不是真正的实时，但适合某些场景</p></li></ul><h2 id="高级用法"><a href="#高级用法" class="headerlink" title="高级用法"></a>高级用法</h2><blockquote><p>结合 grep 过滤内容：<code>tail -f /path/to/logfile.log | grep &quot;error&quot;</code></p></blockquote><blockquote><p>显示行号：<code>tail -f /path/to/logfile.log | cat -n</code></p></blockquote><blockquote><p>限制显示行数：<code>tail -f -n 50 /path/to/logfile.log</code></p></blockquote><h1 id="Linux后台运行程序"><a href="#Linux后台运行程序" class="headerlink" title="Linux后台运行程序"></a>Linux后台运行程序</h1><h2 id="1-使用-amp-符号"><a href="#1-使用-amp-符号" class="headerlink" title="1. 使用 &amp; 符号"></a>1. 使用 &amp; 符号</h2><p>在命令末尾加上 &amp;，程序会在后台运行：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">command</span> &amp;<br></code></pre></td></tr></table></figure><p>示例：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">python3 script.py &amp;<br></code></pre></td></tr></table></figure><p>此时会返回一个进程 ID（PID），但关闭终端后程序可能会终止</p><h2 id="2-使用-nohup（忽略挂断信号）"><a href="#2-使用-nohup（忽略挂断信号）" class="headerlink" title="2. 使用 nohup（忽略挂断信号）"></a>2. 使用 nohup（忽略挂断信号）</h2><p><code>nohup</code> 可以让程序在终端关闭后继续运行：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">nohup</span> <span class="hljs-built_in">command</span> &amp;<br></code></pre></td></tr></table></figure><p>输出默认会保存到 <code>nohup.out</code> 文件中。</p><p>示例：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">nohup</span> python3 script.py &amp;<br></code></pre></td></tr></table></figure><p>可以指定输出文件：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">nohup</span> python3 script.py &gt; output.log 2&gt;&amp;1 &amp;<br></code></pre></td></tr></table></figure><p><code>&gt; output.log</code>：重定向标准输出到文件。</p><p><code>2&gt;&amp;1</code>：将标准错误（stderr）也重定向到标准输出（stdout）。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>note</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>linux</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>SegmentTree 线段树</title>
     <link href="/2025/06/17/note/SegmentTree/"/>
     <url>/2025/06/17/note/SegmentTree/</url>
