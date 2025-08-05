@@ -16,21 +16,24 @@
   <meta name="author" content="Jie Wang">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Hexo 指令小记">
+    <meta name="description" content="note">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo 指令">
-<meta property="og:url" content="https://xifenggood.github.io/2025/07/08/hexo/Hexo_command/index.html">
+<meta property="og:title" content="gdb command">
+<meta property="og:url" content="https://xifenggood.github.io/2025/08/01/note/gdb/index.html">
 <meta property="og:site_name" content="这里是后花园">
-<meta property="og:description" content="Hexo 指令小记">
+<meta property="og:description" content="note">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-07-08T12:00:46.000Z">
-<meta property="article:modified_time" content="2025-07-17T14:31:58.462Z">
+<meta property="og:image" content="https://xifenggood.github.io/img/code.webp">
+<meta property="article:published_time" content="2025-08-01T13:51:06.000Z">
+<meta property="article:modified_time" content="2025-08-01T14:21:03.553Z">
 <meta property="article:author" content="Jie Wang">
+<meta property="article:tag" content="code">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://xifenggood.github.io/img/code.webp">
   
   
   
-  <title>Hexo 指令 - 这里是后花园</title>
+  <title>gdb command - 这里是后花园</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -232,7 +235,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Hexo 指令"></span>
+            <span id="subtitle" data-typed-text="gdb command"></span>
           
         </div>
 
@@ -243,8 +246,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-07-08 20:00" pubdate>
-          2025年7月8日 晚上
+        <time datetime="2025-08-01 21:51" pubdate>
+          2025年8月1日 晚上
         </time>
       </span>
     
@@ -255,7 +258,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          223 字
+          1.9k 字
         
       </span>
     
@@ -266,7 +269,7 @@
         
         
         
-          2 分钟
+          16 分钟
         
       </span>
     
@@ -303,35 +306,117 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Hexo 指令</h1>
+            <h1 id="seo-header">gdb command</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="创建新页面"><a href="#创建新页面" class="headerlink" title="创建新页面"></a>创建新页面</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo new [layout] &lt;title&gt;<br></code></pre></td></tr></table></figure>
+                <h1 id="gdb"><a href="#gdb" class="headerlink" title="gdb"></a>gdb</h1><p>gdb调试前提</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs applescript">gcc <span class="hljs-built_in">file</span>.c -g<br></code></pre></td></tr></table></figure>
 
-<table>
-<thead>
-<tr>
-<th>Option</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>-p, –path</td>
-<td>Post path. Customize the path of the post.</td>
-</tr>
-<tr>
-<td>-r, –replace</td>
-<td>Replace the current post if existed.</td>
-</tr>
-<tr>
-<td>-s, –slug</td>
-<td>Post slug. Customize the URL of the post.</td>
-</tr>
-</tbody></table>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo new page --path about/me <span class="hljs-string">&quot;About me&quot;</span><br></code></pre></td></tr></table></figure>
+<ol>
+<li><p>显示源代码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">(gdb) l 							<span class="hljs-comment"># 下翻源代码</span><br>(gdb) l -							<span class="hljs-comment"># 上翻源代码</span><br>(gdb) l 20							<span class="hljs-comment"># 查看启动程序20行附近的源代码</span><br>(gdb) l main						<span class="hljs-comment"># 查看启动程序main函数附近的源代码</span><br>(gdb) l main.c:20					<span class="hljs-comment"># main.c文件第20行附近的源代码</span><br>(gdb) l main.c:main					<span class="hljs-comment"># main.c文件main函数附近的源代码</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>打断点</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">break</span>/b   [文件名:][行号|函数名]			<span class="hljs-comment">#在某个位置设置一个普通的、持续生效的断点</span><br>tbreak/tb [文件名:][行号|函数名]			<span class="hljs-comment">#在某个位置设置一个只生效一次的一次性断点</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>查看断点信息</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">info <span class="hljs-built_in">break</span>/i b						<span class="hljs-comment">#可以省略到只剩下i b，但空格不能省略，不能使用ib</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>删除断点</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">delete/d [n] 			<span class="hljs-comment">#如果不加断点编号就是删除所有断点，若加上编号则表示删除n号断点</span><br></code></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="常用调试指令"><a href="#常用调试指令" class="headerlink" title="常用调试指令"></a>常用调试指令</h2><ol>
+<li><span style=color:red;background:yellow><strong>逐语句&#x2F;单步调试</strong></span></li>
+</ol>
+<p>step&#x2F;s 命令可以用来进行单步调试，即遇到函数调用会进入函数。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">(gdb) step/s<br></code></pre></td></tr></table></figure>
 
+<ol start="2">
+<li><span style=color:red;background:yellow><strong>跳出并执行完函数</strong></span></li>
+</ol>
+<p>我们可以使用 finish 命令执行完整个函数，并返回到函数调用处：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">(gdb) finish/fin<br></code></pre></td></tr></table></figure>
+
+<p>稍微需要注意的是：在main函数当中使用该指令是无效的，因为main一般处在调用栈的最底层。</p>
+<ol start="3">
+<li><span style=color:red;background:yellow><strong>逐过程</strong></span></li>
+</ol>
+<p>next&#x2F;n 命令表示逐过程，也就是说遇到函数调用，它不会进入函数，而是把函数调用看作一条语句直接执行完毕。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">(gdb) next/n<br></code></pre></td></tr></table></figure>
+
+
+<ol start="4">
+<li><span style=color:red;background:yellow><strong>继续，跳过一次断点：</strong></span></li>
+</ol>
+<p>continue&#x2F;c 命令可以运行到逻辑上的下一个断点处：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">(gdb) c								#相当于VS当中的继续功能按钮<br></code></pre></td></tr></table></figure>
+
+<ol start="5">
+<li><span style=color:red;background:yellow><strong>忽略断点n次</strong></span></li>
+</ol>
+<p>我们可以用 ignore 命令来指定忽略某个断点多少次，这在调试循环的时候非常有用。使用格式如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">ignore N COUNT<br></code></pre></td></tr></table></figure>
+
+<p>常见用法：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">(gdb) ignore 1 10			# 忽略1号断点10次<br></code></pre></td></tr></table></figure>
+
+<p>注意：</p>
+<ol>
+<li>设定忽略断点次数后，还需要按<code>c</code>继续跳过断点才会生效。</li>
+<li>设定一次，仅生效一次。</li>
+<li><font color=red><strong>跳过n次断点，那么程序会在(n + 1)次到达这个断点时停下来。</strong></font></li>
+</ol>
+<p>print&#x2F;p 命令可以打印表达式的值：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">print/p express				#后面直接跟一个表达式即可，你完全把这个功能当成Linux的计算器来使用<br></code></pre></td></tr></table></figure>
+
+<p><span style=color:red;background:yellow><strong>如果想要持续的，展示某个表达式的值，使用格式如下：</strong></span></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">display/disp express					# 每调试一步输出一次express的值<br>undisplay/undisp [n]					# 删除所有或[n]号自动展示的表达式<br>info display/i disp						# 显示所有自动展示的表达式信息<br></code></pre></td></tr></table></figure>
+
+<p><span style=color:red;background:yellow><strong>如果需要查看所有局部变量的值，局部变量窗口，使用格式如下：</strong></span></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">(gdb) info/i args					# 查看函数的参数<br>(gdb) info/i locals 				# 查看函数所有局部变量的值<br></code></pre></td></tr></table></figure>
+
+<p><span style=color:red;background:yellow><strong>查看堆栈信息</strong></span></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">bt/backtrace				#查看当前调用堆栈的信息，会一直追溯到程序启动<br></code></pre></td></tr></table></figure>
+
+<p>一般我们可以在报错的位置使用该指令，用于查看程序的执行流程以及排查相关的问题。</p>
+<p><span style=color:red;background:yellow><strong>查看内存，内存窗口</strong></span></p>
+<p>我们可以用 x 命令查看内存的值，类似VS当中的内存窗口，虽然不如VS那么直观，但在某些场景中会有奇效。</p>
+<p>基本使用格式如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">x/(内存单元的个数)(内存数据的输出格式)(一个内存单元的大小) 数组名/指针/地址值...<br></code></pre></td></tr></table></figure>
+
+<p>该指令会从<code>数组名/指针/地址值..</code>开始，向后以<code>(内存数据的输出格式)</code>，展示<code>(内存单元的个数) * (一个内存单元的大小)</code>的内存数据。</p>
+<p>其中：</p>
+<p>内存单元的个数，直接输入一个整数即可。</p>
+<p>内存数据的输出格式有：</p>
+<ol>
+<li>o(octal)，八进制整数</li>
+<li>x(hex)，十六进制整数</li>
+<li>d(decimal)，十进制整数</li>
+<li>u(unsigned decimal)，无符号整数</li>
+<li>t(binary)，二进制整数</li>
+<li>f(float)，浮点数</li>
+<li>c(char)，字符</li>
+<li>a(address)，地址值</li>
+<li>c(character)：字符</li>
+<li>s(string)，字符串</li>
+</ol>
+<p>一个内存单元的大小的表示，有以下格式：</p>
+<ol>
+<li>b(byte)，一个字节</li>
+<li>h(halfword,  2 bytes)，二个字节</li>
+<li>w(word, 4 bytes)，四个字节</li>
+<li>g(giant, 8 bytes)，八个字节</li>
+</ol>
+<h1 id="Coredump文件"><a href="#Coredump文件" class="headerlink" title="Coredump文件"></a>Coredump文件</h1><p>通常情况下，程序异常终止时，会产生 Coredump 文件。Coredump 文件类似飞机上的”黑匣子”，它会保留程序”失事”瞬间的一些信息，通常包含寄存器的状态、栈调用情况等。</p>
+<ol>
+<li><p>如果代码压根跑不起来，或者跑起来就会直接崩溃，可以利用<font color=red><strong>Core文件</strong></font>进行辅助调试</p>
+</li>
+<li><p>在实际的生产环境中，可能无法直接复现报错情况(或者很麻烦)。那么程序报错了，只能通过<font color=red><strong>Core文件</strong></font>来检测程序的错误信息，进而修正代码。</p>
+</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">gdb hello core_hello_1679196427		<span class="hljs-comment"># gdb + 可执行文件的名字 + core文件名</span><br></code></pre></td></tr></table></figure>
                 
               </div>
             
@@ -339,6 +424,34 @@
             <div>
               <div class="post-metas my-3">
   
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/note/" class="category-chain-item">note</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/code/" class="print-no-link">#code</a>
+      
+    </div>
   
 </div>
 
@@ -348,8 +461,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Hexo 指令</div>
-      <div>https://xifenggood.github.io/2025/07/08/hexo/Hexo_command/</div>
+      <div>gdb command</div>
+      <div>https://xifenggood.github.io/2025/08/01/note/gdb/</div>
     </div>
     <div class="license-meta">
       
@@ -361,7 +474,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年7月8日</div>
+          <div>2025年8月1日</div>
         </div>
       
       
@@ -393,9 +506,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/08/01/note/gdb/" title="gdb command">
+                      <a href="/2025/08/01/note/ThreadPool/" title="ThreadPool">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">gdb command</span>
+                        <span class="hidden-mobile">ThreadPool</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -403,8 +516,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/07/08/note/linux-command/" title="linux 命令">
-                        <span class="hidden-mobile">linux 命令</span>
+                      <a href="/2025/07/08/hexo/Hexo_command/" title="Hexo 指令">
+                        <span class="hidden-mobile">Hexo 指令</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -427,7 +540,7 @@
         var options = Object.assign(
           {"clientID":"Ov23liqtvAkyLhpFDrHE","clientSecret":"70dc00cda979ef006734e668cf095d1cd0a84ba9","repo":"gitalk-comments","owner":"XifengGood","admin":["XifengGood"],"language":"zh-CN","labels":["Gitalk"],"perPage":10,"pagerDirection":"last","distractionFreeMode":false,"createIssueManually":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","id":"location.pathname"},
           {
-            id: '1d9f6a1eddd016bf4fdc4b62c129b30a'
+            id: '19dccd876d6266ca8c36c54bcfa10281'
           }
         )
         var gitalk = new Gitalk(options);

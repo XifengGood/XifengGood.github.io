@@ -24,7 +24,7 @@
 <meta property="og:description" content="linux 命令小记">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-07-08T11:40:22.000Z">
-<meta property="article:modified_time" content="2025-07-17T14:32:22.413Z">
+<meta property="article:modified_time" content="2025-08-01T14:54:46.790Z">
 <meta property="article:author" content="Jie Wang">
 <meta property="article:tag" content="linux">
 <meta name="twitter:card" content="summary_large_image">
@@ -256,7 +256,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          887 字
+          2k 字
         
       </span>
     
@@ -267,7 +267,7 @@
         
         
         
-          8 分钟
+          17 分钟
         
       </span>
     
@@ -366,6 +366,53 @@
 
 <p><code>&gt; output.log</code>：重定向标准输出到文件。</p>
 <p><code>2&gt;&amp;1</code>：将标准错误（stderr）也重定向到标准输出（stdout）。</p>
+<h1 id="3-查看磁盘情况"><a href="#3-查看磁盘情况" class="headerlink" title="3.查看磁盘情况"></a>3.查看磁盘情况</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">df</span> -Th<br></code></pre></td></tr></table></figure>
+
+<h1 id="4-创建软硬链接"><a href="#4-创建软硬链接" class="headerlink" title="4.创建软硬链接"></a>4.创建软硬链接</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">ln</span> [-s]<br></code></pre></td></tr></table></figure>
+
+<h1 id="5-改变文件权限"><a href="#5-改变文件权限" class="headerlink" title="5.改变文件权限"></a>5.改变文件权限</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">chmod</span><br></code></pre></td></tr></table></figure>
+
+<h1 id="6-改变文件所有者"><a href="#6-改变文件所有者" class="headerlink" title="6.改变文件所有者"></a>6.改变文件所有者</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">chown</span><br></code></pre></td></tr></table></figure>
+
+<h1 id="7-抓包"><a href="#7-抓包" class="headerlink" title="7.抓包"></a>7.抓包</h1><p>在Linux下进行网络抓包有多种工具和方法，以下是常用的几种方式：</p>
+<h2 id="1-使用-tcpdump（命令行工具）"><a href="#1-使用-tcpdump（命令行工具）" class="headerlink" title="1. 使用 tcpdump（命令行工具）"></a>1. 使用 <code>tcpdump</code>（命令行工具）</h2><p><code>tcpdump</code> 是最常用的命令行抓包工具，支持过滤和保存抓包数据。</p>
+<p>基本用法：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo tcpdump -i eth0 -w capture.pcap<br></code></pre></td></tr></table></figure>
+<p><code>-i eth0</code>：指定网卡（如 <code>eth0</code>、<code>ens33</code> 或 <code>any</code> 抓所有网卡）。</p>
+<p><code>-w capture.pcap</code>：将抓包数据保存到文件（可用Wireshark分析）。</p>
+<p><code>-n</code>：禁止IP&#x2F;端口解析（提升速度）。</p>
+<p><code>port 80</code>：只抓80端口的流量（过滤示例）。</p>
+<p>示例：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo tcpdump -i any port 22 -n -v  <span class="hljs-comment"># 抓取SSH流量（22端口）</span><br></code></pre></td></tr></table></figure>
+<h2 id="2-使用-tshark（Wireshark的命令行版）"><a href="#2-使用-tshark（Wireshark的命令行版）" class="headerlink" title="2. 使用 tshark（Wireshark的命令行版）"></a>2. 使用 <code>tshark</code>（Wireshark的命令行版）</h2><p><code>tshark</code> 是Wireshark的命令行工具，功能强大。</p>
+<p>基本用法：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo tshark -i eth0 -w output.pcap<br></code></pre></td></tr></table></figure>
+<p><code>-f &quot;tcp port 80&quot;</code>：设置抓包过滤表达式。</p>
+<p><code>-Y &quot;http.request&quot;</code>：显示过滤（类似Wireshark的过滤语法）。</p>
+<h2 id="3-使用-Wireshark（图形化工具）"><a href="#3-使用-Wireshark（图形化工具）" class="headerlink" title="3. 使用 Wireshark（图形化工具）"></a>3. 使用 Wireshark（图形化工具）</h2><p>如果系统有桌面环境，可以安装Wireshark：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo apt install wireshark  <span class="hljs-comment"># Debian/Ubuntu</span><br>sudo yum install wireshark  <span class="hljs-comment"># CentOS/RHEL</span><br></code></pre></td></tr></table></figure>
+<p>启动Wireshark后选择网卡开始抓包。</p>
+<p>注意：需用sudo wireshark或配置用户权限（推荐将用户加入wireshark组）。</p>
+<h2 id="4-使用-ngrep（基于正则的抓包）"><a href="#4-使用-ngrep（基于正则的抓包）" class="headerlink" title="4. 使用 ngrep（基于正则的抓包）"></a>4. 使用 <code>ngrep</code>（基于正则的抓包）</h2><p><code>ngrep</code> 可以按正则表达式匹配抓包内容：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo ngrep -d eth0 <span class="hljs-string">&quot;GET|POST&quot;</span> port 80<br></code></pre></td></tr></table></figure>
+<p>匹配HTTP的GET&#x2F;POST请求。</p>
+<h2 id="5-其他工具"><a href="#5-其他工具" class="headerlink" title="5. 其他工具"></a>5. 其他工具</h2><p><code>nmap</code>：端口扫描时抓包（<code>nmap -p 80 --packet-trace target</code>）。</p>
+<p><code>ss/netstat</code>：查看当前连接（不抓包，但辅助分析）。</p>
+<h2 id="常见场景"><a href="#常见场景" class="headerlink" title="常见场景"></a>常见场景</h2><p>抓HTTP流量：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo tcpdump -i any -A -s0 port 80 | grep <span class="hljs-string">&quot;Host:&quot;</span><br></code></pre></td></tr></table></figure>
+<p>抓DNS查询：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo tcpdump -i any port 53 -n<br></code></pre></td></tr></table></figure>
+<p>抓ICMP（Ping）包：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo tcpdump -i any icmp -n<br></code></pre></td></tr></table></figure>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><ul>
+<li><p>需要root权限（或用户加入wireshark组）。</p>
+</li>
+<li><p>抓包文件（.pcap）可用Wireshark可视化分析。</p>
+</li>
+<li><p>生产环境中避免长时间抓包（文件过大），建议用-c 100限制包数量。</p>
+</li>
+</ul>
+<p>如果需要更复杂的分析，可以结合过滤表达式或脚本处理抓包数据。</p>
 
                 
               </div>

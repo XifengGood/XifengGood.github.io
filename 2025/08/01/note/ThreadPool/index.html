@@ -16,21 +16,24 @@
   <meta name="author" content="Jie Wang">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Hexo 指令小记">
+    <meta name="description" content="note">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo 指令">
-<meta property="og:url" content="https://xifenggood.github.io/2025/07/08/hexo/Hexo_command/index.html">
+<meta property="og:title" content="ThreadPool">
+<meta property="og:url" content="https://xifenggood.github.io/2025/08/01/note/ThreadPool/index.html">
 <meta property="og:site_name" content="这里是后花园">
-<meta property="og:description" content="Hexo 指令小记">
+<meta property="og:description" content="note">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-07-08T12:00:46.000Z">
-<meta property="article:modified_time" content="2025-07-17T14:31:58.462Z">
+<meta property="og:image" content="https://xifenggood.github.io/img/code.webp">
+<meta property="article:published_time" content="2025-08-01T14:19:24.000Z">
+<meta property="article:modified_time" content="2025-08-01T14:19:47.992Z">
 <meta property="article:author" content="Jie Wang">
+<meta property="article:tag" content="code">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://xifenggood.github.io/img/code.webp">
   
   
   
-  <title>Hexo 指令 - 这里是后花园</title>
+  <title>ThreadPool - 这里是后花园</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -232,7 +235,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Hexo 指令"></span>
+            <span id="subtitle" data-typed-text="ThreadPool"></span>
           
         </div>
 
@@ -243,8 +246,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-07-08 20:00" pubdate>
-          2025年7月8日 晚上
+        <time datetime="2025-08-01 22:19" pubdate>
+          2025年8月1日 晚上
         </time>
       </span>
     
@@ -255,7 +258,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          223 字
+          1.9k 字
         
       </span>
     
@@ -266,7 +269,7 @@
         
         
         
-          2 分钟
+          16 分钟
         
       </span>
     
@@ -303,34 +306,14 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Hexo 指令</h1>
+            <h1 id="seo-header">ThreadPool</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="创建新页面"><a href="#创建新页面" class="headerlink" title="创建新页面"></a>创建新页面</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo new [layout] &lt;title&gt;<br></code></pre></td></tr></table></figure>
-
-<table>
-<thead>
-<tr>
-<th>Option</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>-p, –path</td>
-<td>Post path. Customize the path of the post.</td>
-</tr>
-<tr>
-<td>-r, –replace</td>
-<td>Replace the current post if existed.</td>
-</tr>
-<tr>
-<td>-s, –slug</td>
-<td>Post slug. Customize the URL of the post.</td>
-</tr>
-</tbody></table>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo new page --path about/me <span class="hljs-string">&quot;About me&quot;</span><br></code></pre></td></tr></table></figure>
+                <h3 id=""><a href="#" class="headerlink" title=""></a></h3><!-- more -->
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-meta">#<span class="hljs-keyword">pragma</span> once</span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;vector&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;thread&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;queue&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;condition_variable&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;functional&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;future&gt;</span></span><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">ThreadPool</span><br>&#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">DoTask</span><span class="hljs-params">()</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>)<br>        &#123;<br>            std::function&lt;<span class="hljs-type">void</span>()&gt; task;<br>            &#123;<br>                std::unique_lock&lt;std::mutex&gt; lock&#123;queue_mutex&#125;;<br>                condition.<span class="hljs-built_in">wait</span>(lock,<br>                               [<span class="hljs-keyword">this</span>]<br>                               &#123; <span class="hljs-keyword">return</span> stop || !tasks.<span class="hljs-built_in">empty</span>(); &#125;);<br>                <span class="hljs-keyword">if</span> (stop &amp;&amp; tasks.<span class="hljs-built_in">empty</span>())<br>                &#123;<br>                    <span class="hljs-keyword">return</span>;<br>                &#125;<br>                task = std::<span class="hljs-built_in">move</span>(tasks.<span class="hljs-built_in">front</span>());<br>                tasks.<span class="hljs-built_in">pop</span>();<br>            &#125;<br>            <span class="hljs-built_in">task</span>();<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-built_in">ThreadPool</span>(<span class="hljs-type">size_t</span> threads) : <span class="hljs-built_in">stop</span>(<span class="hljs-literal">false</span>)<br>    &#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">size_t</span> i = <span class="hljs-number">0</span>; i &lt; threads; ++i)<br>        &#123;<br>            workers.<span class="hljs-built_in">emplace_back</span>(std::<span class="hljs-built_in">bind</span>(&amp;ThreadPool::DoTask, <span class="hljs-keyword">this</span>));<br>        &#125;<br>    &#125;<br><br>    ~<span class="hljs-built_in">ThreadPool</span>()<br>    &#123;<br>        &#123;<br>            std::unique_lock&lt;std::mutex&gt; ul&#123;queue_mutex&#125;;<br>            stop = <span class="hljs-literal">true</span>;<br>        &#125;<br>        condition.<span class="hljs-built_in">notify_all</span>();<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> &amp;worker : workers)<br>        &#123;<br>            worker.<span class="hljs-built_in">join</span>();<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">class</span> <span class="hljs-title class_">F</span>, <span class="hljs-keyword">class</span>... Args&gt;<br>    <span class="hljs-function"><span class="hljs-keyword">auto</span> <span class="hljs-title">enqueue</span><span class="hljs-params">(F &amp;&amp;f, Args &amp;&amp;...args)</span> -&gt; std::future&lt;<span class="hljs-keyword">typename</span> std::result_of&lt;<span class="hljs-title">F</span><span class="hljs-params">(Args...)</span>&gt;::type&gt;</span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">using</span> return_type = <span class="hljs-keyword">typename</span> std::result_of&lt;<span class="hljs-built_in">F</span>(Args...)&gt;::type;<br><br>        <span class="hljs-keyword">auto</span> task = std::make_shared&lt;std::packaged_task&lt;<span class="hljs-built_in">return_type</span>()&gt;&gt;(<br>            std::<span class="hljs-built_in">bind</span>(std::forward&lt;F&gt;(f), std::forward&lt;Args&gt;(args)...));<br><br>        std::future&lt;return_type&gt; res = task-&gt;<span class="hljs-built_in">get_future</span>();<br>        &#123;<br>            std::unique_lock&lt;std::mutex&gt; lock&#123;queue_mutex&#125;;<br>            <span class="hljs-keyword">if</span> (stop)<br>            &#123;<br>                <span class="hljs-keyword">throw</span> std::<span class="hljs-built_in">runtime_error</span>(<span class="hljs-string">&quot;enqueue on stopped ThreadPool&quot;</span>);<br>            &#125;<br>            tasks.<span class="hljs-built_in">emplace</span>(<br>                [task]()<br>                &#123;<br>                    (*task)();<br>                &#125;);<br>        &#125;<br>        condition.<span class="hljs-built_in">notify_one</span>();<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br><br><span class="hljs-keyword">private</span>:<br>    std::vector&lt;std::thread&gt; workers;<br>    std::queue&lt;std::function&lt;<span class="hljs-type">void</span>()&gt;&gt; tasks;<br>    std::mutex queue_mutex;<br>    std::condition_variable condition;<br>    <span class="hljs-type">bool</span> stop;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<p>[^1]:</p>
 
                 
               </div>
@@ -339,6 +322,34 @@
             <div>
               <div class="post-metas my-3">
   
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/note/" class="category-chain-item">note</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/code/" class="print-no-link">#code</a>
+      
+    </div>
   
 </div>
 
@@ -348,8 +359,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Hexo 指令</div>
-      <div>https://xifenggood.github.io/2025/07/08/hexo/Hexo_command/</div>
+      <div>ThreadPool</div>
+      <div>https://xifenggood.github.io/2025/08/01/note/ThreadPool/</div>
     </div>
     <div class="license-meta">
       
@@ -361,7 +372,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年7月8日</div>
+          <div>2025年8月1日</div>
         </div>
       
       
@@ -393,9 +404,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/08/01/note/gdb/" title="gdb command">
+                      <a href="/2025/08/01/note/LRUCache/" title="LRUCache">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">gdb command</span>
+                        <span class="hidden-mobile">LRUCache</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -403,8 +414,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/07/08/note/linux-command/" title="linux 命令">
-                        <span class="hidden-mobile">linux 命令</span>
+                      <a href="/2025/08/01/note/gdb/" title="gdb command">
+                        <span class="hidden-mobile">gdb command</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -427,7 +438,7 @@
         var options = Object.assign(
           {"clientID":"Ov23liqtvAkyLhpFDrHE","clientSecret":"70dc00cda979ef006734e668cf095d1cd0a84ba9","repo":"gitalk-comments","owner":"XifengGood","admin":["XifengGood"],"language":"zh-CN","labels":["Gitalk"],"perPage":10,"pagerDirection":"last","distractionFreeMode":false,"createIssueManually":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","id":"location.pathname"},
           {
-            id: '1d9f6a1eddd016bf4fdc4b62c129b30a'
+            id: '975d2cd94ff75d4c1f46a7c69942e072'
           }
         )
         var gitalk = new Gitalk(options);
