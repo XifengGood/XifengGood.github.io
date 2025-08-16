@@ -1,18 +1,20 @@
 ---
-title: 动态规划DP
+title: 动态规划
 date: 2025-04-14 08:36:38
 layout: note
 tags:
   - code
 categories:
   - - note
-excerpt: DP的总结与模板
+excerpt: 动态规划(DP)的总结与模板
 index_img: /img/code.webp
 math: true
 ---
 ## 状态压缩DP
 
-只关心已经枚举的集合，不关心具体的排列。
+特征
+ - 只关心已经枚举的集合，不关心具体的排列。
+ - 问题规模\( $N<=20$ \)
 
 LeetCode 526.优美的排列[^1]
 ``` C++
@@ -68,10 +70,12 @@ int countArrangement(int n) {
 
 
 时间复杂度=状态数量×状态计算时间。
+
 空间复杂度=状态数量。
-时间复杂度:
-$$O(nD)$$
-n是数字的位数，D为数字的进制数。
+
+时间复杂度: $O(nD)$。
+
+$n$是数字的位数，$D$为数字的进制数。
 
 ### 上界模板
 ``` C++

@@ -7,6 +7,7 @@ tags:
  - code
 categories:
  - [code, C#]
+excerpt: C#的内置委托类型
 ---
 # 委托(delegate)
 ## 声明委托（Delegate）

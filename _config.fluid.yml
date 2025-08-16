@@ -1,3 +1,12 @@
+# 用于浏览器标签的图标
+# Icon for browser tab
+favicon: /favicon_io/favicon.ico
+
+# 用于苹果设备的图标
+# Icon for Apple touch
+apple_touch_icon: /favicon_io/apple-touch-icon.png
+
+
 # 导航栏的相关配置
 # Navigation bar
 navbar:
@@ -60,20 +69,85 @@ about:
     - { class: "iconfont icon-wechat-fill", qrcode: "/img/wechat_qrcode.jpg", tip: "WeChat" }
     - { class: "iconfont icon-qq-fill", qrcode: "/img/qq_qrcode.png", tip: "QQ" }
 
+#---------------------------
+# 文章页
+# Post Page
+#---------------------------
 post:
   math:
     enable: true
     specific: false
     engine: mathjax
 
-comments:
-  enable: true
-  type: gitalk
+  comments:
+    enable: true
+    type: gitalk
+
+  # 在文章开头显示文章更新时间，该时间默认是 md 文件更新时间，可通过 front-matter 中 `updated` 手动指定（和 date 一样格式）
+  # Update date is displayed at the beginning of the post. The default date is the update date of the md file, which can be manually specified by `updated` in front-matter (same format as date)
+  updated:
+    enable: true
+
+    # 格式参照 ISO-8601 日期格式化
+    # ISO-8601 date format
+    # See: http://momentjs.cn/docs/#/parsing/string-format/
+    date_format: "LL a"
+
+    # 是否使用相对时间表示，比如："3 天前"
+    # If true, it will be a relative time, such as: "3 days ago"
+    relative: true
+
+    # 提示标签类型
+    # Note class
+    # Options: default | primary | info | success | warning | danger | light
+    note_class: info
+
+#---------------------------
+# 友链页
+# Links Page
+#---------------------------
+links:
+  comments:
+    enable: true
+    type: gitalk
   
+  # 友链的成员项
+  # Member item of page
+  items:
+    - {
+      title: "Fluid Blog",
+      intro: "主题博客",
+      link: "https://hexo.fluid-dev.com/",
+      avatar: "/img/favicon.png"
+    }
+    - {
+      title: "Fluid Docs",
+      intro: "主题使用指南",
+      link: "https://hexo.fluid-dev.com/docs/",
+      avatar: "/img/favicon.png"
+    }
+    - {
+      title: "Fluid Repo",
+      intro: "主题 GitHub 仓库",
+      link: "https://github.com/fluid-dev/hexo-theme-fluid",
+      avatar: "/img/favicon.png"
+    }
+
+  custom:
+    enable: true
+    content: '<hr><p>在下方留言申请加入我的友链，按如下格式提供信息：</p><ul><li>博客名：Fluid</li><li>简介：Fluid 主题官方博客</li><li>链接：https://hexo.fluid-dev.com</li><li>图片：https://hexo.fluid-dev.com/img/favicon.png</li></ul>'
+
 gitalk:
-  enable: true
-  owner: xifenggood
-  admin: xifenggood
-  repo: https://github.com/XifengGood/gitalk-comments.git
-  ClientID: Ov23liqtvAkyLhpFDrHE
-  ClientSecret: 70dc00cda979ef006734e668cf095d1cd0a84ba9
+  owner: XifengGood
+  admin: ['XifengGood']
+  repo: gitalk-comments
+  clientID: Ov23liqtvAkyLhpFDrHE
+  clientSecret: 70dc00cda979ef006734e668cf095d1cd0a84ba9
+  language: zh-CN
+  labels: ['Gitalk']
+  perPage: 10  # 每页评论数
+  id: location.pathname
+  pagerDirection: last
+  distractionFreeMode: false
+  createIssueManually: true
+  proxy: https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token
